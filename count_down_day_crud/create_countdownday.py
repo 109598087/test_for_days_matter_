@@ -64,17 +64,21 @@ def click_calendar_type(self):
 
 # 只能點畫面上有的
 def set_countdown_day_target_day(self, year, month, day):
+    click_target_day_button(self)
     self.driver.find_element_by_xpath('//*[@text="' + str(year) + '年"]').click()
     time.sleep(1)
     self.driver.find_element_by_xpath('//*[@text="' + str(month) + '月"]').click()
     time.sleep(1)
     self.driver.find_element_by_xpath('//*[@text="' + str(day) + '日"]').click()
     time.sleep(1)
+    click_blank_space(self)
 
 
 def set_countdown_day_countdown_book(self, countdown_book):
+    click_set_class_button(self)
     self.driver.find_element_by_xpath(
         '//*[@class="android.widget.TextView" and @resource-id="com.clover.daysmatter:id/list_item_title" and @text=' + '\"' + countdown_book + '\"' + ']').click()
+    time.sleep(1)
 
 
 # 置頂
@@ -94,6 +98,12 @@ def click_save_button(self):
     time.sleep(1)
 
 
+def set_countdown_day_repeat(self, countdown_day_repeat):
+    click_countdown_day_set_repeat_button(self)
+    choose_repeat_type_every1_weeks(self, countdown_day_repeat)
+    click_blank_space(self)
+
+
 class TestPostCreate(unittest.TestCase):
     def setUp(self) -> None:
         appium_start_Session(self)
@@ -104,29 +114,27 @@ class TestPostCreate(unittest.TestCase):
         click_create_countdown_day_button(self)
         # 輸入到數日名稱
         countdown_day_name = '123456789'
+        countdown_day_target_year = 2020
+        countdown_day_target_month = 5
+        countdown_day_target_day = 8
         countdown_day_countdown_book = '工作'
+        countdown_day_repeat = 'Months'
 
         input_countdown_day_name(self, countdown_day_name)
         # 設定 target_day -> yesterday
-        click_target_day_button(self)
-        set_countdown_day_target_day(self, 2020, 5, 8)
-        click_blank_space(self)
-
+        set_countdown_day_target_day(self, countdown_day_target_year, countdown_day_target_month, countdown_day_target_day)
         # 設定分類
-        click_set_class_button(self)
         set_countdown_day_countdown_book(self, countdown_day_countdown_book)
         # 設定至頂
         # click_countdown_day_set_top_button(self)
         # 設定重複
-        click_countdown_day_set_repeat_button(self)
-        choose_repeat_type_every1_weeks(self, 'Months')
-        click_blank_space(self)
+        set_countdown_day_repeat(self, countdown_day_repeat)
         # 保存
         click_save_button(self)
 
         t = self.driver.find_element_by_xpath('//*[contains(@text, ' + countdown_day_name + ')]').get_attribute('name')
-        print(t)
         assert countdown_day_name in t
+        print('test_create_countdown_day ok')
 
     def tearDown(self) -> None:
         pass
