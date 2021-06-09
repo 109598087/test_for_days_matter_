@@ -38,7 +38,9 @@ class TestCountDownRead(unittest.TestCase):
         click_save_button(self)
         # read
         read_countdown_day(self, countdown_day_name)
-        # self.driver.find
+        assert countdown_day_name in self.driver.find_element_by_xpath(
+            '//*[@resource-id="com.clover.daysmatter:id/title"]').get_attribute('name')
+        print('test_read_countdown_day ok')
 
     def tearDown(self) -> None:
         pass
