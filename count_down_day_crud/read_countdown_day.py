@@ -43,4 +43,5 @@ class TestCountDownRead(unittest.TestCase):
         print('test_read_countdown_day ok')
 
     def tearDown(self) -> None:
-        pass
+        self.driver.quit()
+
