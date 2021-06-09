@@ -52,7 +52,7 @@ def click_blank_space(self):
         self.driver.tap([(100, 50)], 500)
     except:
         pass
-    time.sleep(1)
+    time.sleep(2)
 
 
 #############################################################
@@ -111,13 +111,17 @@ class TestPostCreate(unittest.TestCase):
         click_set_class_button(self)
         set_work_class(self)
         # 設定至頂
-        click_countdown_day_set_top_button(self)
+        # click_countdown_day_set_top_button(self)
         # 設定重複
         click_countdown_day_set_repeat_button(self)
         choose_repeat_type_every1_weeks(self)
         click_blank_space(self)
         # 保存
         click_save_button(self)
+
+        t = self.driver.find_element_by_xpath('//*[contains(@text, ' + countdown_day_name + ')]').get_attribute('name')
+        print(t)
+        assert countdown_day_name in t
 
     def tearDown(self) -> None:
         pass
