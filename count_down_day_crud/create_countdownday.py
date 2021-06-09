@@ -21,17 +21,6 @@ def click_create_countdown_day_button(self):
     wait_until_EditActivity_page_is_visible(self)
 
 
-def input_countdown_day_name(self, countdown_day_name):
-    self.driver.find_element_by_id("com.clover.daysmatter:id/text_title").send_keys(countdown_day_name)
-    time.sleep(1)
-
-
-# 公陰曆
-def click_calendar_type(self):
-    self.driver.find_element_by_xpath('//*[@resource-id="com.clover.daysmatter:id/switch_is_lunar_calendar"]').click()
-    time.sleep(1)
-
-
 def click_target_day_button(self):
     self.driver.find_element_by_xpath('//*[@resource-id="com.clover.daysmatter:id/text_due_date"]').click()
     time.sleep(1)
@@ -39,11 +28,6 @@ def click_target_day_button(self):
 
 def click_set_class_button(self):
     self.driver.find_element_by_id("com.clover.daysmatter:id/summary_category").click()
-    time.sleep(1)
-
-
-def click_countdown_day_set_top_button(self):
-    self.driver.find_element_by_id("com.clover.daysmatter:id/switch_top").click()
     time.sleep(1)
 
 
@@ -67,31 +51,46 @@ def skip_how_to_use(self):
     wait_until_MainActivity_page_is_visible(self)
 
 
+def input_countdown_day_name(self, countdown_day_name):
+    self.driver.find_element_by_id("com.clover.daysmatter:id/text_title").send_keys(countdown_day_name)
+    time.sleep(1)
+
+
+# 公陰曆
+def click_calendar_type(self):
+    self.driver.find_element_by_xpath('//*[@resource-id="com.clover.daysmatter:id/switch_is_lunar_calendar"]').click()
+    time.sleep(1)
+
+
+# 只能點畫面上有的
+def set_countdown_day_target_day(self, year, month, day):
+    self.driver.find_element_by_xpath('//*[@text="' + str(year) + '年"]').click()
+    time.sleep(1)
+    self.driver.find_element_by_xpath('//*[@text="' + str(month) + '月"]').click()
+    time.sleep(1)
+    self.driver.find_element_by_xpath('//*[@text="' + str(day) + '日"]').click()
+    time.sleep(1)
+
+
 def set_countdown_day_countdown_book(self, countdown_book):
     self.driver.find_element_by_xpath(
         '//*[@class="android.widget.TextView" and @resource-id="com.clover.daysmatter:id/list_item_title" and @text=' + '\"' + countdown_book + '\"' + ']').click()
 
 
-def day_choose_countdown_day_yesterday(self):
-    e1 = self.driver.find_element_by_xpath(
-        '/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[3]/android.widget.TextView[2]')
-    e2 = self.driver.find_element_by_xpath(
-        '/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[3]/android.widget.TextView[3]')
-    self.driver.drag_and_drop(e1, e2)
+# 置頂
+def click_countdown_day_set_top_button(self):
+    self.driver.find_element_by_id("com.clover.daysmatter:id/switch_top").click()
+    time.sleep(1)
 
 
-##
-def choose_repeat_type_every1_weeks(self):
-    e1 = self.driver.find_element_by_xpath(
-        '/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.LinearLayout/android.widget.ListView[2]/android.widget.RelativeLayout[3]/android.widget.TextView[1]')
-    e2 = self.driver.find_element_by_xpath(
-        '/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.LinearLayout/android.widget.ListView[2]/android.widget.RelativeLayout[4]/android.widget.TextView[1]')
-    self.driver.drag_and_drop(e2, e1)
+# 只能點畫面上有的
+def choose_repeat_type_every1_weeks(self, months_years):
+    self.driver.find_element_by_xpath('//*[contains(@text, "' + months_years + '")]').click()
+    time.sleep(1)
 
 
 def click_save_button(self):
-    self.driver.find_element_by_xpath(
-        '/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.Button').click()
+    self.driver.find_element_by_xpath('//*[@resource-id="com.clover.daysmatter:id/button_save"]').click()
     time.sleep(1)
 
 
@@ -110,7 +109,7 @@ class TestPostCreate(unittest.TestCase):
         input_countdown_day_name(self, countdown_day_name)
         # 設定 target_day -> yesterday
         click_target_day_button(self)
-        day_choose_countdown_day_yesterday(self)
+        set_countdown_day_target_day(self, 2020, 5, 8)
         click_blank_space(self)
 
         # 設定分類
@@ -120,7 +119,7 @@ class TestPostCreate(unittest.TestCase):
         # click_countdown_day_set_top_button(self)
         # 設定重複
         click_countdown_day_set_repeat_button(self)
-        choose_repeat_type_every1_weeks(self)
+        choose_repeat_type_every1_weeks(self, 'Months')
         click_blank_space(self)
         # 保存
         click_save_button(self)
