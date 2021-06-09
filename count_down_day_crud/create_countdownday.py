@@ -13,7 +13,7 @@ import unittest
 from appium.webdriver.common.touch_action import TouchAction
 
 from keywords.open import appium_start_Session
-from keywords.wait_until import wait_until_EditActivity_page_is_visible
+from keywords.wait_until import wait_until_EditActivity_page_is_visible, wait_until_MainActivity_page_is_visible
 
 
 def click_create_countdown_day_button(self):
@@ -23,11 +23,17 @@ def click_create_countdown_day_button(self):
 
 def input_countdown_day_name(self, countdown_day_name):
     self.driver.find_element_by_id("com.clover.daysmatter:id/text_title").send_keys(countdown_day_name)
+    time.sleep(1)
+
+
+# 公陰曆
+def click_calendar_type(self):
+    self.driver.find_element_by_xpath('//*[@resource-id="com.clover.daysmatter:id/switch_is_lunar_calendar"]').click()
+    time.sleep(1)
 
 
 def click_target_day_button(self):
-    self.driver.find_element_by_xpath(
-        "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.FrameLayout").click()
+    self.driver.find_element_by_xpath('//*[@resource-id="com.clover.daysmatter:id/text_due_date"]').click()
     time.sleep(1)
 
 
@@ -57,17 +63,15 @@ def click_blank_space(self):
 
 #############################################################
 def skip_how_to_use(self):
+    self.driver.find_element_by_xpath('//*[@class="android.widget.ImageButton"]').click()
+    wait_until_MainActivity_page_is_visible(self)
+
+
+def set_countdown_day_countdown_book(self, countdown_book):
     self.driver.find_element_by_xpath(
-        "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.ImageButton").click()
-    self.driver.wait_activity(".ui.activity.MainActivity", 30)
+        '//*[@class="android.widget.TextView" and @resource-id="com.clover.daysmatter:id/list_item_title" and @text=' + '\"' + countdown_book + '\"' + ']').click()
 
 
-def set_work_class(self):
-    self.driver.find_element_by_xpath(
-        "/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.view.ViewGroup[2]/android.widget.RelativeLayout").click()
-
-
-##
 def day_choose_countdown_day_yesterday(self):
     e1 = self.driver.find_element_by_xpath(
         '/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[3]/android.widget.TextView[2]')
@@ -101,6 +105,8 @@ class TestPostCreate(unittest.TestCase):
         click_create_countdown_day_button(self)
         # 輸入到數日名稱
         countdown_day_name = '123456789'
+        countdown_day_countdown_book = '工作'
+
         input_countdown_day_name(self, countdown_day_name)
         # 設定 target_day -> yesterday
         click_target_day_button(self)
@@ -109,7 +115,7 @@ class TestPostCreate(unittest.TestCase):
 
         # 設定分類
         click_set_class_button(self)
-        set_work_class(self)
+        set_countdown_day_countdown_book(self, countdown_day_countdown_book)
         # 設定至頂
         # click_countdown_day_set_top_button(self)
         # 設定重複
