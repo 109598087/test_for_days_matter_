@@ -23,11 +23,13 @@ def click_create_countdown_day_button(self):
 
 
 def click_target_day_button(self):
+    time.sleep(1)
     self.driver.find_element_by_xpath('//*[@resource-id="com.clover.daysmatter:id/text_due_date"]').click()
     time.sleep(1)
 
 
 def click_set_class_button(self):
+    time.sleep(1)
     self.driver.find_element_by_id("com.clover.daysmatter:id/summary_category").click()
     time.sleep(1)
 
@@ -48,13 +50,14 @@ def click_blank_space(self):
 
 #############################################################
 def skip_how_to_use(self):
+    time.sleep(1)
     self.driver.find_element_by_xpath('//*[@class="android.widget.ImageButton"]').click()
     wait_until_MainActivity_page_is_visible(self)
 
 
 def input_countdown_day_name(self, countdown_day_name):
     self.driver.find_element_by_id("com.clover.daysmatter:id/text_title").send_keys(countdown_day_name)
-    time.sleep(1)
+    time.sleep(2)
 
 
 # 公陰曆
@@ -66,11 +69,12 @@ def click_calendar_type(self):
 # 只能點畫面上有的
 def set_countdown_day_target_day(self, year, month, day):
     click_target_day_button(self)
-    self.driver.find_element_by_xpath('//*[@text="' + str(year) + '年"]').click()
     time.sleep(1)
-    self.driver.find_element_by_xpath('//*[@text="' + str(month) + '月"]').click()
+    self.driver.find_element_by_xpath('//*[contains(@text, "年") and contains(@text, "' + str(year) + '")]').click()
     time.sleep(1)
-    self.driver.find_element_by_xpath('//*[@text="' + str(day) + '日"]').click()
+    self.driver.find_element_by_xpath('//*[contains(@text, "月") and contains(@text, "' + str(month) + '")]').click()
+    time.sleep(1)
+    self.driver.find_element_by_xpath('//*[contains(@text, "日") and contains(@text, "' + str(day) + '")]').click()
     time.sleep(1)
     click_blank_space(self)
 
@@ -95,6 +99,7 @@ def choose_repeat_type_every1_weeks(self, months_years):
 
 
 def click_save_button(self):
+    time.sleep(2)
     self.driver.find_element_by_xpath('//*[@resource-id="com.clover.daysmatter:id/button_save"]').click()
     time.sleep(1)
 
@@ -117,7 +122,7 @@ def verify_create_countdown_day_unsuccessfully(self, countdown_day_name):
         pass
 
 
-class TestPostCreate(unittest.TestCase):
+class TestCountdownDayCreate(unittest.TestCase):
     def setUp(self) -> None:
         appium_start_Session(self)
         skip_how_to_use(self)
@@ -155,4 +160,4 @@ class TestPostCreate(unittest.TestCase):
         print('test_create_countdown_day_and_click_back_button ok')
 
     def tearDown(self) -> None:
-        pass
+        self.driver.quit()

@@ -6,7 +6,7 @@ parameters = [
     ["B1", "B2", "B3"],
     ["C1", "C2"],
     ["D1", "D2"],
-    ["E1", "E2"],
+    ["E1", "E2", "E3"],
 ]
 
 for i, pairs in enumerate(AllPairs(parameters)):
