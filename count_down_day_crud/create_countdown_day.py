@@ -107,41 +107,44 @@ def get_date_of_before(days_of_before):
 
 
 class TestCountdownDayCreate(unittest.TestCase):
+    def __init__(self, methodName: str = ...):
+        super().__init__(methodName)
+        self.driver = None
+
     def setUp(self) -> None:
         appium_start_Session(self)
         skip_how_to_use(self)
 
     def test_create_countdown_day(self):
-        self.driver.implicitly_wait(5)
         click_create_countdown_day_button(self)
 
-        countdown_day_name = '123456789'
+        self.countdown_day_name = '123456789'
         target_date_list = get_date_of_before(397)
-        countdown_day_target_year = int(target_date_list[0])
-        countdown_day_target_month = int(target_date_list[1])
-        countdown_day_target_day = int(target_date_list[2])
-        countdown_day_countdown_book = '工作'
-        countdown_day_repeat = 'Months'
+        self.countdown_day_target_year = int(target_date_list[0])
+        self.countdown_day_target_month = int(target_date_list[1])
+        self.countdown_day_target_day = int(target_date_list[2])
+        self.countdown_day_countdown_book = '工作'
+        self.countdown_day_repeat = 'Months'
 
-        input_countdown_day_name(self, countdown_day_name)
-        set_countdown_day_target_day(self, countdown_day_target_year, countdown_day_target_month,
-                                     countdown_day_target_day)
-        set_countdown_day_countdown_book(self, countdown_day_countdown_book)
+        input_countdown_day_name(self, self.countdown_day_name)
+        set_countdown_day_target_day(self,
+                                     self.countdown_day_target_year,
+                                     self.countdown_day_target_month,
+                                     self.countdown_day_target_day)
+        set_countdown_day_countdown_book(self, self.countdown_day_countdown_book)
         # click_countdown_day_set_top_button(self)
-        set_countdown_day_repeat(self, countdown_day_repeat)
+        set_countdown_day_repeat(self, self.countdown_day_repeat)
         # 保存
         click_save_button(self)
-        verify_create_countdown_day_successfully(self, countdown_day_name)
+        verify_create_countdown_day_successfully(self, self.countdown_day_name)
         print('test_create_countdown_day ok')
 
     def test_create_countdown_day_and_click_back_button(self):
         click_create_countdown_day_button(self)
-        # 輸入到數日名稱
-        countdown_day_name = '123456789'
-        input_countdown_day_name(self, countdown_day_name)
-
+        self.countdown_day_name = '123456789'
+        input_countdown_day_name(self, self.countdown_day_name)
         self.driver.find_element_by_xpath('//android.widget.ImageButton[@content-desc="向上瀏覽"]').click()
-        verify_create_countdown_day_unsuccessfully(self, countdown_day_name)
+        verify_create_countdown_day_unsuccessfully(self, self.countdown_day_name)
         print('test_create_countdown_day_and_click_back_button ok')
 
     def tearDown(self) -> None:
