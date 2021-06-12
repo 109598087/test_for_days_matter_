@@ -5,7 +5,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 from count_down_day_crud.create_countdown_day import skip_how_to_use, click_create_countdown_day_button, \
     input_countdown_day_name, click_save_button
-from count_down_day_crud.edit_coundown_day import click_edit_button
+from count_down_day_crud.edit_countdown_day import click_edit_button
 from count_down_day_crud.read_countdown_day import read_countdown_day
 from keywords.open import appium_start_Session
 
