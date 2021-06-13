@@ -98,9 +98,7 @@ class TestCountdownDayEdit(unittest.TestCase):
         # 保存
         click_save_button(self)
         # verify top
-        time.sleep(2)
-        self.driver.find_element_by_xpath(
-            '//android.widget.ImageButton[@content-desc="向上瀏覽"]').click()
+        click_back_button(self)
         verify_edit_countdown_day_top_successfully(self, countdown_day_name)
         click_blank_space(self)
         read_countdown_day(self, countdown_day_name)

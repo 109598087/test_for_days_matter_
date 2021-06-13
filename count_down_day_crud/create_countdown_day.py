@@ -36,6 +36,7 @@ def click_blank_space(self):
 
 
 def click_back_button(self):
+    time.sleep(2)
     self.driver.find_element_by_xpath('//android.widget.ImageButton[@content-desc="向上瀏覽"]').click()
 
 
