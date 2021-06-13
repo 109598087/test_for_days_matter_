@@ -13,4 +13,5 @@ def appium_start_Session(self):
 
     # appium start Session
     self.driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', caps)
+    self.driver.implicitly_wait(5)
     wait_until_UserGuideActivity_page_is_visible(self)
