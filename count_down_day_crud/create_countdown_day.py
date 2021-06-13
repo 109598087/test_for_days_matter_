@@ -35,6 +35,10 @@ def click_blank_space(self):
         pass
 
 
+def click_back_button(self):
+    self.driver.find_element_by_xpath('//android.widget.ImageButton[@content-desc="向上瀏覽"]').click()
+
+
 #############################################################
 def skip_how_to_use(self):
     self.driver.find_element_by_xpath('//*[@class="android.widget.ImageButton"]').click()
@@ -94,6 +98,8 @@ def verify_create_countdown_day_successfully(self, countdown_day_name):
 def verify_create_countdown_day_unsuccessfully(self, countdown_day_name):
     try:
         self.driver.find_element_by_xpath('//*[contains(@text, ' + countdown_day_name + ')]').get_attribute('name')
+    except NoSuchElementException:
+        pass
     except StaleElementReferenceException:
         pass
 
@@ -143,7 +149,7 @@ class TestCountdownDayCreate(unittest.TestCase):
         click_create_countdown_day_button(self)
         self.countdown_day_name = '123456789'
         input_countdown_day_name(self, self.countdown_day_name)
-        self.driver.find_element_by_xpath('//android.widget.ImageButton[@content-desc="向上瀏覽"]').click()
+        click_back_button(self)
         verify_create_countdown_day_unsuccessfully(self, self.countdown_day_name)
         print('test_create_countdown_day_and_click_back_button ok')
 
