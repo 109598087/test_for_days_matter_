@@ -26,6 +26,10 @@ def input_before_date_num(self, before_date_num):
 
 class TestCountDaysOfBefore(unittest.TestCase):
 
+    def __init__(self, methodName: str = ...):
+        super().__init__(methodName)
+        self.driver = None
+
     def setUp(self) -> None:
         appium_start_Session(self)
         skip_how_to_use(self)

@@ -1,9 +1,7 @@
-import time
 import unittest
 
 from count_down_day_crud.create_countdown_day import skip_how_to_use, click_create_countdown_day_button, \
-    set_countdown_day_target_day, input_countdown_day_name, set_countdown_day_countdown_book, set_countdown_day_repeat, \
-    click_save_button, get_date_of_before
+    input_countdown_day_name, click_save_button
 from keywords.open import appium_start_Session
 
 
@@ -30,6 +28,10 @@ def verify_change_read_date_format_successfully(self):
 
 
 class TestCountDownRead(unittest.TestCase):
+    def __init__(self, methodName: str = ...):
+        super().__init__(methodName)
+        self.driver = None
+
     def setUp(self) -> None:
         appium_start_Session(self)
         skip_how_to_use(self)

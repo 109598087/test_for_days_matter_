@@ -1,10 +1,8 @@
 import datetime
 import time
 
-from appium import webdriver
 import unittest
 
-from appium.webdriver.common.touch_action import TouchAction
 from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
 
 from keywords.open import appium_start_Session
@@ -40,12 +38,6 @@ def click_back_button(self):
     self.driver.find_element_by_xpath('//android.widget.ImageButton[@content-desc="向上瀏覽"]').click()
 
 
-def create_countdown_day_countdown_book(self, countdown_day_countdown_book):
-    self.driver.find_element_by_xpath('//*[contains(@text, "添加新倒數本")]').click()
-    self.driver.find_element_by_id('com.clover.daysmatter:id/text_title').send_keys(countdown_day_countdown_book)
-    self.driver.find_element_by_id('com.clover.daysmatter:id/button_save').click()
-
-
 #############################################################
 def skip_how_to_use(self):
     self.driver.find_element_by_xpath('//*[@class="android.widget.ImageButton"]').click()
@@ -71,13 +63,7 @@ def set_countdown_day_target_day(self, year, month, day):
 
 
 def set_countdown_day_countdown_book(self, countdown_book):
-    preset_countdown_book_list = self.driver.find_elements_by_xpath(
-        '//*[@class="android.widget.TextView" and @resource-id="com.clover.daysmatter:id/list_item_title"]')
-    if countdown_book in preset_countdown_book_list:
-        click_set_countdown_book_button(self)
-    else:
-        click_set_countdown_book_button(self)
-        create_countdown_day_countdown_book(self, countdown_book)
+    click_set_countdown_book_button(self)
     time.sleep(1)
     self.driver.find_element_by_xpath(
         '//*[@class="android.widget.TextView" and @resource-id="com.clover.daysmatter:id/list_item_title" and @text=' + '\"' + countdown_book + '\"' + ']').click()
