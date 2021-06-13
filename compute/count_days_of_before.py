@@ -8,23 +8,20 @@ from keywords.open import appium_start_Session
 
 def click_menu_botton(self):
     self.driver.find_element_by_xpath('//android.widget.ImageButton[@content-desc="Open the main menu"]').click()
-    time.sleep(1)
 
 
 def click_countdown_book_button(self):
     self.driver.find_element_by_xpath('//*[@class="android.widget.RelativeLayout"]').click()
-    time.sleep(1)
 
 
 def click_data_calculator_button(self):
-    self.driver.find_element_by_xpath('//*[@text="Date Calculator"]').click()
     time.sleep(1)
+    self.driver.find_element_by_xpath('//*[@text="Date Calculator"]').click()
 
 
 def input_before_date_num(self, before_date_num):
     self.driver.find_element_by_xpath('//*[@resource-id="com.clover.daysmatter:id/before_date_num"]').send_keys(
         before_date_num)
-    time.sleep(1)
 
 
 class TestCountDaysOfBefore(unittest.TestCase):
