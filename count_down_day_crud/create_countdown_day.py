@@ -30,7 +30,7 @@ def click_countdown_day_set_repeat_button(self):
 
 def click_blank_space(self):
     try:
-        self.driver.tap([(100, 50)], 500)
+        self.driver.tap([(200, 500)], 500)
     except:
         pass
 
