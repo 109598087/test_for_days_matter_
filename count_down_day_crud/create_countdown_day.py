@@ -66,6 +66,7 @@ def set_countdown_day_target_day(self, year, month, day):
 
 def set_countdown_day_countdown_book(self, countdown_book):
     click_set_countdown_book_button(self)
+    time.sleep(1)
     self.driver.find_element_by_xpath(
         '//*[@class="android.widget.TextView" and @resource-id="com.clover.daysmatter:id/list_item_title" and @text=' + '\"' + countdown_book + '\"' + ']').click()
 
@@ -81,12 +82,16 @@ def choose_countdown_day_repeat(self, months_years):
 
 
 def click_save_button(self):
+    time.sleep(1)
     self.driver.find_element_by_xpath('//*[@resource-id="com.clover.daysmatter:id/button_save"]').click()
 
 
 def set_countdown_day_repeat(self, countdown_day_repeat):
+    time.sleep(1)
     click_countdown_day_set_repeat_button(self)
+    time.sleep(1)
     choose_countdown_day_repeat(self, countdown_day_repeat)
+    time.sleep(1)
     click_blank_space(self)
 
 
