@@ -11,6 +11,7 @@ def click_menu_botton(self):
 
 
 def click_countdown_book_button(self):
+    time.sleep(1)
     self.driver.find_element_by_xpath('//*[@class="android.widget.RelativeLayout"]').click()
 
 
