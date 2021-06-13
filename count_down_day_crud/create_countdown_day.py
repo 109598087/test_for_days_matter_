@@ -20,7 +20,7 @@ def click_target_day_button(self):
     self.driver.find_element_by_xpath('//*[@resource-id="com.clover.daysmatter:id/text_due_date"]').click()
 
 
-def click_set_class_button(self):
+def click_set_countdown_book_button(self):
     self.driver.find_element_by_id("com.clover.daysmatter:id/summary_category").click()
 
 
@@ -64,7 +64,7 @@ def set_countdown_day_target_day(self, year, month, day):
 
 
 def set_countdown_day_countdown_book(self, countdown_book):
-    click_set_class_button(self)
+    click_set_countdown_book_button(self)
     self.driver.find_element_by_xpath(
         '//*[@class="android.widget.TextView" and @resource-id="com.clover.daysmatter:id/list_item_title" and @text=' + '\"' + countdown_book + '\"' + ']').click()
 
@@ -75,7 +75,7 @@ def click_countdown_day_set_top_button(self):
 
 
 # 只能點畫面上有的
-def choose_repeat_type_every1_weeks(self, months_years):
+def choose_countdown_day_repeat(self, months_years):
     self.driver.find_element_by_xpath('//*[contains(@text, "' + months_years + '")]').click()
 
 
@@ -85,7 +85,7 @@ def click_save_button(self):
 
 def set_countdown_day_repeat(self, countdown_day_repeat):
     click_countdown_day_set_repeat_button(self)
-    choose_repeat_type_every1_weeks(self, countdown_day_repeat)
+    choose_countdown_day_repeat(self, countdown_day_repeat)
     click_blank_space(self)
 
 
