@@ -1,10 +1,8 @@
-import time
 import unittest
 
 from count_down_day_crud.create_countdown_day import skip_how_to_use, click_create_countdown_day_button, \
     input_countdown_day_name, set_countdown_day_target_day, set_countdown_day_countdown_book, set_countdown_day_repeat, \
-    click_save_button, click_countdown_day_set_top_button, get_date_of_before, click_back_button, click_blank_space, \
-    click_set_countdown_book_button
+    click_save_button, click_countdown_day_set_top_button, get_date_of_before, click_back_button, click_blank_space
 from count_down_day_crud.read_countdown_day import read_countdown_day
 from keywords.open import appium_start_Session
 
@@ -59,12 +57,6 @@ def verify_edit_countdown_day_repeat_successfully(self, countdown_day_repeat):
         countdown_day_repeat_str = '每月重複'
     assert countdown_day_repeat_str in self.driver.find_element_by_id(
         "com.clover.daysmatter:id/summary_repeat").get_attribute('name')
-
-
-def create_countdown_day_countdown_book(self, countdown_day_countdown_book):
-    self.driver.find_element_by_xpath('//*[contains(@text, "添加新倒數本")]').click()
-    self.driver.find_element_by_id('com.clover.daysmatter:id/text_title').send_keys(countdown_day_countdown_book)
-    self.driver.find_element_by_id('com.clover.daysmatter:id/button_save').click()
 
 
 class TestCountdownDayEdit(unittest.TestCase):
@@ -133,10 +125,7 @@ class TestCountdownDayEdit(unittest.TestCase):
                                      countdown_day_target_year,
                                      countdown_day_target_month,
                                      countdown_day_target_day)
-        click_set_countdown_book_button(self)
-        create_countdown_day_countdown_book(self, countdown_day_countdown_book)
-        self.driver.find_element_by_xpath(
-            '//*[@class="android.widget.TextView" and @resource-id="com.clover.daysmatter:id/list_item_title" and @text=' + '\"' + countdown_day_countdown_book + '\"' + ']').click()
+        set_countdown_day_countdown_book(self, countdown_day_countdown_book)
         set_countdown_day_repeat(self, countdown_day_repeat)
         # 保存
         click_save_button(self)
@@ -193,10 +182,7 @@ class TestCountdownDayEdit(unittest.TestCase):
                                      countdown_day_target_year,
                                      countdown_day_target_month,
                                      countdown_day_target_day)
-        click_set_countdown_book_button(self)
-        create_countdown_day_countdown_book(self, countdown_day_countdown_book)
-        self.driver.find_element_by_xpath(
-            '//*[@class="android.widget.TextView" and @resource-id="com.clover.daysmatter:id/list_item_title" and @text=' + '\"' + countdown_day_countdown_book + '\"' + ']').click()
+        set_countdown_day_countdown_book(self, countdown_day_countdown_book)
         set_countdown_day_top(self)
         # 保存
         click_save_button(self)
@@ -254,10 +240,7 @@ class TestCountdownDayEdit(unittest.TestCase):
                                      countdown_day_target_year,
                                      countdown_day_target_month,
                                      countdown_day_target_day)
-        click_set_countdown_book_button(self)
-        create_countdown_day_countdown_book(self, countdown_day_countdown_book)
-        self.driver.find_element_by_xpath(
-            '//*[@class="android.widget.TextView" and @resource-id="com.clover.daysmatter:id/list_item_title" and @text=' + '\"' + countdown_day_countdown_book + '\"' + ']').click()
+        set_countdown_day_countdown_book(self, countdown_day_countdown_book)
         set_countdown_day_top(self)
         set_countdown_day_repeat(self, countdown_day_repeat)
         # 保存
@@ -287,10 +270,7 @@ class TestCountdownDayEdit(unittest.TestCase):
                                      countdown_day_target_year,
                                      countdown_day_target_month,
                                      countdown_day_target_day)
-        click_set_countdown_book_button(self)
-        create_countdown_day_countdown_book(self, countdown_day_countdown_book)
-        self.driver.find_element_by_xpath(
-            '//*[@class="android.widget.TextView" and @resource-id="com.clover.daysmatter:id/list_item_title" and @text=' + '\"' + countdown_day_countdown_book + '\"' + ']').click()
+        set_countdown_day_countdown_book(self, countdown_day_countdown_book)
         set_countdown_day_repeat(self, countdown_day_repeat)
         # 保存
         click_save_button(self)
