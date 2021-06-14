@@ -147,7 +147,7 @@ class TestCountdownDayCreate(unittest.TestCase):
         # 保存
         click_save_button(self)
         verify_create_countdown_day_successfully(self, self.countdown_day_name)
-        print('test_create_countdown_day ok')
+        print('test_create_countdown_day s')
 
     def test_create_countdown_day_with_space_countdown_day(self):
         click_create_countdown_day_button(self)
