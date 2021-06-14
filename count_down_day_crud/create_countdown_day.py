@@ -149,6 +149,16 @@ class TestCountdownDayCreate(unittest.TestCase):
         verify_create_countdown_day_successfully(self, self.countdown_day_name)
         print('test_create_countdown_day ok')
 
+    def test_create_countdown_day_with_space_countdown_day(self):
+        click_create_countdown_day_button(self)
+        countdown_day_name = ' '
+        input_countdown_day_name(self, countdown_day_name)
+        # 保存
+        click_save_button(self)
+        assert '' in self.driver.find_element_by_xpath(
+            '//*[contains(@text, "")]').get_attribute('name')
+        print('test_create_countdown_day ok')
+
     def test_create_countdown_day_and_click_back_button(self):
         click_create_countdown_day_button(self)
         self.countdown_day_name = '123456789'
