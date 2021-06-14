@@ -112,7 +112,7 @@ class TestCountdownDayEdit(unittest.TestCase):
                                                           countdown_day_target_day)
         verify_edit_countdown_day_countdown_book_successfully(self, countdown_day_countdown_book)
         verify_edit_countdown_day_repeat_successfully(self, countdown_day_repeat)
-        print('test_edit_a_countdown_day_with_input1 ok')
+        print('test_edit_a_countdown_day_with_input1 success!')
 
     def test_edit_a_countdown_day_with_input2(self):
         countdown_day_name = '中文倒數日'
@@ -144,7 +144,7 @@ class TestCountdownDayEdit(unittest.TestCase):
                                                           countdown_day_target_month,
                                                           countdown_day_target_day)
         verify_edit_countdown_day_repeat_successfully(self, countdown_day_repeat)
-        print('test_edit_a_countdown_day_with_input2 ok')
+        print('test_edit_a_countdown_day_with_input2 success!')
 
     def test_edit_a_countdown_day_with_input3(self):
         countdown_day_name = '中文倒數日'
@@ -173,7 +173,7 @@ class TestCountdownDayEdit(unittest.TestCase):
                                                           countdown_day_target_month,
                                                           countdown_day_target_day)
         verify_edit_countdown_day_repeat_successfully(self, countdown_day_repeat)
-        print('test_edit_a_countdown_day_with_input3 ok')
+        print('test_edit_a_countdown_day_with_input3 success!')
 
     def test_edit_a_countdown_day_with_input4(self):
         countdown_day_name = 'english_countdown_name'
@@ -203,7 +203,7 @@ class TestCountdownDayEdit(unittest.TestCase):
                                                           countdown_day_target_month,
                                                           countdown_day_target_day)
         verify_edit_countdown_day_countdown_book_successfully(self, countdown_day_countdown_book)
-        print('test_edit_a_countdown_day_with_input4 ok')
+        print('test_edit_a_countdown_day_with_input4 success!')
 
     def test_edit_a_countdown_day_with_input5(self):
         countdown_day_name = 'english_countdown_name'
@@ -233,7 +233,7 @@ class TestCountdownDayEdit(unittest.TestCase):
                                                           countdown_day_target_day)
         verify_edit_countdown_day_countdown_book_successfully(self, countdown_day_countdown_book)
         verify_edit_countdown_day_repeat_successfully(self, countdown_day_repeat)
-        print('test_edit_a_countdown_day_with_input5 ok')
+        print('test_edit_a_countdown_day_with_input5 success!')
 
     def test_edit_a_countdown_day_with_input6(self):
         countdown_day_name = '中文倒數日'
@@ -266,7 +266,7 @@ class TestCountdownDayEdit(unittest.TestCase):
                                                           countdown_day_target_day)
         verify_edit_countdown_day_countdown_book_successfully(self, countdown_day_countdown_book)
         verify_edit_countdown_day_repeat_successfully(self, countdown_day_repeat)
-        print('test_edit_a_countdown_day_with_input6 ok')
+        print('test_edit_a_countdown_day_with_input6 success!')
 
     def test_edit_a_countdown_day_with_input7(self):
         countdown_day_name = '中文倒數日'
@@ -298,7 +298,7 @@ class TestCountdownDayEdit(unittest.TestCase):
                                                           countdown_day_target_day)
         verify_edit_countdown_day_countdown_book_successfully(self, countdown_day_countdown_book)
         verify_edit_countdown_day_repeat_successfully(self, countdown_day_repeat)
-        print('test_edit_a_countdown_day_with_input7 ok')
+        print('test_edit_a_countdown_day_with_input7 success!')
 
     def test_edit_a_countdown_day_with_input8(self):
         countdown_day_name = 'english_countdown_name'
@@ -324,7 +324,7 @@ class TestCountdownDayEdit(unittest.TestCase):
                                                           countdown_day_target_month,
                                                           countdown_day_target_day)
         verify_edit_countdown_day_countdown_book_successfully(self, countdown_day_countdown_book)
-        print('test_edit_a_countdown_day_with_input8 ok')
+        print('test_edit_a_countdown_day_with_input8 success!')
 
     def test_edit_a_countdown_day_with_input9(self):
         countdown_day_name = 'english_countdown_name'
@@ -353,7 +353,7 @@ class TestCountdownDayEdit(unittest.TestCase):
                                                           countdown_day_target_day)
         verify_edit_countdown_day_countdown_book_successfully(self, countdown_day_countdown_book)
         verify_edit_countdown_day_repeat_successfully(self, countdown_day_repeat)
-        print('test_edit_a_countdown_day_with_input9 ok')
+        print('test_edit_a_countdown_day_with_input9 success!')
 
     def tearDown(self) -> None:
         self.driver.quit()

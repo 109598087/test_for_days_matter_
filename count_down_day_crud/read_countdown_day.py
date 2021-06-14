@@ -47,7 +47,7 @@ class TestCountDownRead(unittest.TestCase):
         verify_read_countdown_day_successfully(self, self.countdown_day_name)
         # click_countdown_day(self)
         # verify_change_read_date_format_successfully(self)
-        print('test_read_countdown_day ok')
+        print('test_read_countdown_day success!')
 
     def tearDown(self) -> None:
         self.driver.quit()

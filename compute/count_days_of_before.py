@@ -45,7 +45,7 @@ class TestCountDaysOfBefore(unittest.TestCase):
         threeDayAgo = datetime.datetime.today() - datetime.timedelta(before_date_num)
         otherStyleTime = threeDayAgo.strftime("%Y-%m-%d")
         assert otherStyleTime in self.driver.find_element_by_xpath('//*[contains(@text, "公元")]').get_attribute('name')
-        print('test_count_days_before_input1 ok')
+        print('test_count_days_before_input1 success!')
 
     def test_count_days_before_input2(self):
         click_menu_botton(self)
@@ -57,7 +57,7 @@ class TestCountDaysOfBefore(unittest.TestCase):
         threeDayAgo = datetime.datetime.today() - datetime.timedelta(before_date_num)
         otherStyleTime = threeDayAgo.strftime("%Y-%m-%d")
         assert otherStyleTime in self.driver.find_element_by_xpath('//*[contains(@text, "公元")]').get_attribute('name')
-        print('test_count_days_before_input2 ok')
+        print('test_count_days_before_input2 success!')
 
     def test_count_days_before_input3(self):
         click_menu_botton(self)
@@ -69,7 +69,7 @@ class TestCountDaysOfBefore(unittest.TestCase):
         threeDayAgo = datetime.datetime.today() - datetime.timedelta(before_date_num)
         otherStyleTime = threeDayAgo.strftime("%Y-%m-%d")
         assert otherStyleTime in self.driver.find_element_by_xpath('//*[contains(@text, "公元")]').get_attribute('name')
-        print('test_count_days_before_input3 ok')
+        print('test_count_days_before_input3 success!')
 
     def test_count_days_before_input4(self):
         click_menu_botton(self)
@@ -81,7 +81,7 @@ class TestCountDaysOfBefore(unittest.TestCase):
         threeDayAgo = datetime.datetime.today() - datetime.timedelta(before_date_num)
         otherStyleTime = threeDayAgo.strftime("%Y-%m-%d")
         assert otherStyleTime in self.driver.find_element_by_xpath('//*[contains(@text, "公元")]').get_attribute('name')
-        print('test_count_days_before_input4 ok')
+        print('test_count_days_before_input4 success!')
 
     def tearDown(self) -> None:
         self.driver.quit()
